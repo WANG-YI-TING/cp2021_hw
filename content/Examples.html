@@ -139,10 +139,18 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Exam << <a href='Exam.html'>Previous</a> <a href='HW1.html'>Next</a> >> HW1<br /><h1>w13</h1>
-<p></p>
-<p><button id="add1to100">列出10座標</button></p>
-<p></p>
+    <div id="tipue_search_content">w10 << <a href='w10.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3<br /><h1>Examples</h1>
+<p>這個頁面 demo 如何在同一頁面下納入多個線上 Ace 編輯器與執行按鈕. (本動態頁面檔案 <a href="./../downloads/Examples.txt">Examples.txt</a>)</p>
+<p>1. 從 1 累加到 100 (以下列 button 呈現).</p>
+<p>2. 教科書 (<a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>) 2.6 Exercises, 共有三個題目, 請分別將程式製作為按鈕 (button).</p>
+<p>3. 請利用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas</a> 繪製 Fig. 3.7 的流程圖 (Flow Chart).</p>
+<p>4. 請利用 Canvas 繪製你所編寫"從 1 累加到 10"程式的流程圖 (Flow Chart).</p>
+<p>5. 請各班各組合力完成 3.5 Exercises 中的 14 個題目.</p>
+<p>6. 請各組從 4.3 Exercises 中選擇一個題目製作為頁面中的按鈕 (button).</p>
+<p>無 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API">Canvas</a> 繪圖需求的程式, 可放在第一區, 而採 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API">Canvas</a> 繪圖的程式則可放入第二區.</p>
+<p>將 Gist 中的程式導入本頁面的程式段: <a href="./../downloads/brython_button_prog.txt">brython_button_prog.txt</a>, 只要配合 button id 對應即可導入編輯區.</p>
+<p><button id="add1to100">1 add to 100</button></p>
+<p>將 iterable 與 iterator <a href="https://home.gamer.com.tw/creationDetail.php?sn=4337438">相關說明</a>, 利用 Brython 與 Ace Editor 整理在這個頁面.</p>
 <!-- 導入 brython 程式庫 -->
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
@@ -190,7 +198,7 @@ def run1():
     try:
         url = doc.query["src"]
     except:
-        url = "https://gist.githubusercontent.com/lee-kai-shin/a088183e270315a83cd46af3c6e339e3/raw/200b4d9d32fcad25ba4af6227132148f66fd80a6/gistfile1.txt"
+        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
     prog = open(url).read()
 
     # 將程式載入編輯區
@@ -228,7 +236,7 @@ def clear_bd1(ev):
 # 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
 Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
 
-add1to100_url = "https://gist.githubusercontent.com/41023125/df56e6bee91ebe39d7dcd45638e26cbc/raw/ef73b7a2125a32cd5bce92da8e6311d4748b8e32/w13%25E6%25B8%25AC%25E9%25A9%2597"
+add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
 
 # 從 gist 取得程式碼
 add_src = open(add1to100_url).read()
@@ -258,8 +266,100 @@ doc["add1to100"].bind('click', add)
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
 <p><!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --></p>
 <div id="brython_div1"></div>
-<!-- editor1 結束 -->
-<br />Exam << <a href='Exam.html'>Previous</a> <a href='HW1.html'>Next</a> >> HW1</div>
+<!-- editor1 結束 --><hr/><!-- button 程式 1 ####################################### button 程式 1 結束-->
+<p></p>
+<!-- button 程式 2 ####################################### button 程式 2 開始-->
+<p>第二編輯區程式 (<a href="https://gist.github.com/mdecourse/fd325f7ff3fb71a9653bf156fe53d7dc">編輯</a> Snake 原始碼):</p>
+<p><button id="check_input">查驗輸入字串</button><button id="do_snake">Snake</button></p>
+<p><!-- 判斷輸入字串是否aA1$, 且至少 8 個字元-開始 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd2(ev):
+    bd = doc["brython_div2"]
+    bd.clear()
+
+# 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
+Ace3 = ace.Editor(editor_id="kw_editor2", console_id="kw_console2", container_id="kw__container2", storage_id="kw_py_src2" )
+
+check_str_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/56dc6a6b8eaa05b80994ac6f08ebc9326330be43/check_str_input_content_1.py"
+# 從 gist 取得程式碼
+check_src = open(check_str_url).read()
+
+def check_input(ev):
+    Ace3.editor.setValue(check_src)
+    Ace3.editor.scrollToRow(0)
+    Ace3.editor.gotoLine(0)
+    #Ace.run()
+
+# id 為 "check_input" 的按鈕點按時, 執行 check_input 方法
+doc["check_input"].bind('click', check_input)
+
+############ for snake 開始 ############
+
+# 設定與 gist URL 對應的變數
+snake_url = "https://gist.githubusercontent.com/mdecourse/fd325f7ff3fb71a9653bf156fe53d7dc/raw/1bd9880ddd3978cb2b9af9a23954f9f8c2588541/brython_snake.py"
+# 根據程式碼所在的 URL 從 gist 取得程式碼
+snake_src = open(snake_url).read()
+
+# 設計一個函式, 透過網頁的事件導向驅動方式, 
+# 以 button 點擊後將 gist 原始碼導入編輯區(可令其自動執行)
+def do_snake(ev):
+    # 將程式碼導入編輯區, Ace3 將決定放入的編輯區域
+    Ace3.editor.setValue(snake_src)
+    # 程式碼導入後, 滑鼠停在第一行
+    Ace3.editor.scrollToRow(0)
+    Ace3.editor.gotoLine(0)
+    # 取得程式碼後若帶有下一行表示希望即刻執行
+    Ace3.run()
+
+# id 為 "do_snake" 的按鈕點按時, 執行 do_snake 方法
+doc["do_snake"].bind('click', do_snake)
+############ for snake 結束 ############
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定 - 第二編輯區 Ace3 共用
+doc['kw_run2'].bind('click', Ace3.run)
+doc['kw_show_console2'].bind('click', Ace3.show_console)
+doc['kw_clear_console2'].bind('click', Ace3.clear_console)
+doc['clear_bd2'].bind('click', clear_bd2)
+# 呼叫函式執行
+check_input()
+</script>
+</p>
+<p><!-- 判斷輸入字串是否aA1$, 且至少 8 個字元-結束--></p>
+<!-- editor2 開始 -->
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor2" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<p><!-- 存擋表單開始 --></p>
+<form><label>Filename: <input id="kw_filename2" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src2', 'kw_filename2');" type="submit" value="Save"/></form>
+<p><!-- 存擋表單結束 --></p>
+<p></p>
+<p><!-- 執行與清除按鈕開始 --></p>
+<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出區</button><button id="clear_bd2">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<p><!-- 執行與清除按鈕結束 --></p>
+<p></p>
+<p><!-- 程式執行 ouput 區 --></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
+<p><!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --></p>
+<div id="brython_div2"></div>
+<!-- editor2 結束 -->
+<p></p>
+<!-- button 程式 2 ####################################### button 程式 2  結束-->
+<p><!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
+<script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
+</p>
+<h4>References:</h4>
+<p style="padding-left: 30px;"><a href="https://zerojudge.tw/">https://zerojudge.tw/</a></p>
+<p style="padding-left: 30px;"><a href="https://shaform.com/csdream/docs/problem-solving/">https://shaform.com/csdream/docs/problem-solving/</a></p>
+<p style="padding-left: 30px;"><a href="https://onlinejudge.org/">https://onlinejudge.org/</a></p>
+<p style="padding-left: 30px;"></p><br />w10 << <a href='w10.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3</div>
         
     <!-- footer -->
       <div class="container">
