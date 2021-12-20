@@ -5,7 +5,8 @@
 <p>網站倉儲:<a href="https://github.com/WANG-YI-TING/cp2021_hw">https://github.com/WANG-YI-TING/cp2021_hw</a> </p>
 <p>網站連結:<a href="https://wang-yi-ting.github.io/cp2021_hw/">https://wang-yi-ting.github.io/cp2021_hw/</a> </p>
 <p>其他與個人或作業相關資料說明或介紹</p>
-<h1>Exam</h1><h2>w13</h2>
+<h2>SSH</h2>
+<p>putty</p><h2>runsrc</h2><h1>Exam</h1><h2>w13</h2>
 <p></p>
 <p><button id="add1to100">列出10座標</button></p>
 <p></p>
@@ -145,7 +146,146 @@ doc["add1to100"].bind('click', add)
 <p>3. 請將 HW1 與 HW2 的作業內容登錄至個人的 cp2021_hw 倉儲與網站中. (學習如何透過 git 指令修改倉儲中的版本內容)</p>
 <p>4. 請在個人作業網站的 HW2 區域下增設一個 H2 頁面, 將該網頁標題命名為 run, 可以如 <a href="https://mde.tw/cp2021/content/run.html">run</a> 頁面中的內容, 並且利用此頁面收集 Python 範例程式. (例如: 可自動執行的貪食蛇: <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py">https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py</a> 將 <a href="https://gist.github.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439">https://gist.github.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439</a> 作為 <a href="https://mde.tw/cp2021/content/run.html">https://mde.tw/cp2021/content/run.html</a> 頁面中 src 變數的值, 就可以在頁面中導入程式碼並執行)</p>
 <h1>w10</h1>
-<h2>w12</h2><h2>Examples</h2>
+<h2>w12</h2>
+<p><a href="/downloads/w12demo.txt">w12demo.txt</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China#Construction_details">ROC 國旗規格</a>.</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%9B%BD%E6%97%97#%E8%A7%84%E6%A0%BC">PROC 國旗規格</a> - 可以根據此規格定義, 新增 <button id="procflas">PROC flag</button> 按鈕.</p>
+<p><a href="https://en.wikipedia.org/wiki/Flag_of_the_United_States#Specifications">USA 國旗規格</a> - 可以根據此規格定義, 新增 <button id="usaflag">USA flag</button> 按鈕.</p>
+<!-- 導入 brython 程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
+<script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
+</p>
+<p><button id="add1to100">add 1 to 100</button><button id="p261">p261</button><button id="rocflag">ROC flag</button></p>
+<p><!-- ######################  editor1 開始 ###################### --></p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<p><!-- 存擋表單開始 --></p>
+<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
+<p><!-- 存擋表單結束 --></p>
+<p></p>
+<p><!-- 執行與清除按鈕開始 --></p>
+<p><button id="kw_run1">Run</button> <button id="kw_show_console1">Output</button> <button id="kw_clear_console1">清除輸出區</button><button id="clear_bd1">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<p><!-- 執行與清除按鈕結束 --></p>
+<p></p>
+<p><!-- 程式執行 ouput 區 --></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
+<p><!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --></p>
+<!-- 這裡的畫布 id 為 brython_div -->
+<div id="brython_div"></div>
+<p><!-- ######################  editor1 結束 ###################### --></p>
+<!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd1(ev):
+    # 注意這裡清除的畫布 id 為 brython_div
+    bd = doc["brython_div"]
+    bd.clear()
+Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+def run1():
+    # 利用 get 取下 src 變數值
+    try:
+        url = doc.query["src"]
+    except:
+        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
+    prog = open(url).read()
+
+    # 將程式載入編輯區
+    Ace1.editor.setValue(prog)
+    Ace1.editor.scrollToRow(0)
+    Ace1.editor.gotoLine(0)
+    # 直接執行程式
+    #ns = {'__name__':'__main__'}
+    #exec(prog, ns)
+    # 按下 run 按鈕
+    Ace1.run()
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run1'].bind('click', Ace1.run)
+doc['kw_show_console1'].bind('click', Ace1.show_console)
+doc['kw_clear_console1'].bind('click', Ace1.clear_console)
+doc['clear_bd1'].bind('click', clear_bd1)
+# 呼叫函式執行
+run1()
+</script>
+<!-- 以上為內建程式, 頁面可透過 ?src=gist_url 執行 -->
+<p><!-- add 1 to 100 開始 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd1(ev):
+    bd = doc["brython_div1"]
+    bd.clear()
+
+# 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
+Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+
+class button2:
+    def __init__(self, url):
+        self.url = url
+
+    # 記得加入 event 輸入變數
+    def do(self,ev):
+        Ace2.editor.setValue(open(self.url).read())
+        Ace2.editor.scrollToRow(0)
+        Ace2.editor.gotoLine(0)
+        Ace2.run()
+
+add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
+add1to100 = button2(add1to100_url)
+doc["add1to100"].bind('click', add1to100.do)
+################################# p261 start 
+p261_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/980606effcd29635307d6474718cd4a7ef016747/p261.py"
+p261 = button2(p261_url)
+doc["p261"].bind('click', p261.do)
+################################## p261 end
+################################## rocflag start
+rocflag_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/0e2ca81d5c2539c4b6c86071c8cf9de0b1251b9c/roc_flag.py"
+rocflag = button2(rocflag_url)
+doc["rocflag"].bind("click", rocflag.do)
+################################## rocflag end
+</script>
+</p><h2>Examples</h2>
 <p>這個頁面 demo 如何在同一頁面下納入多個線上 Ace 編輯器與執行按鈕. (本動態頁面檔案 <a href="/downloads/Examples.txt">Examples.txt</a>)</p>
 <p>1. 從 1 累加到 100 (以下列 button 呈現).</p>
 <p>2. 教科書 (<a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>) 2.6 Exercises, 共有三個題目, 請分別將程式製作為按鈕 (button).</p>
@@ -395,7 +535,161 @@ check_input()
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/6pJBPPrDO40" title="YouTube video player" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VGkcmBaeAGM" title="YouTube video player" width="560"></iframe></p>
 <p><a href="https://github.com/mdecourse/snake-ai-pytorch">https://github.com/mdecourse/snake-ai-pytorch</a></p>
-<h1>Final Project</h1>
+<h2>snake</h2>
+<!-- 導入 brython 程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<div id="brython_div"></div>
+<script type="text/python">
+# 從 browser 導入 document 並設為 doc
+from browser import document as doc
+# 使用者可以透過 window 當作介面使用其他 Javascript 功能
+from browser import html, window
+# 用於定時執行特定函式
+import browser.timer
+# 導入數學模組
+import math
+# 導入亂數模組
+from random import random, randint
+
+def update_score(new_score):
+    global high_score
+    score_doc.innerHTML = "Score: " + str(new_score)
+    if new_score > high_score:
+        high_score_doc.innerHTML = "High Score: " + str(new_score)
+        high_score = new_score
+    
+def game():
+    global px, py, tc, gs, ax, ay, trail, tail, score
+    # px 為 snake 第一個點的 x 座標, 增量值為 xv
+    px += xv
+    py += yv
+    # 允許穿越四面牆, 以 tc 表示牆面座標極限
+    # 若 px 為負值則設定為 tc -1, 表示 tc 為 x 方向 limit
+    # x 座標方向的穿牆設定
+    if px < 0:
+        px = tc
+    if px > tc:
+        px = 0
+    # y 座標方向的穿牆設定
+    if py < 0:
+        py = tc
+    if py > tc:
+        py = 0
+    ctx.fillStyle = "black"
+    # 畫布填入黑色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    # snake 為 lime 色
+    ctx.fillStyle = "lime"
+    # trail 為數列, 代表 snake 各節 [x,y] 座標
+    # trail = [[x0,y0], [x1, y1], [x2, y2]...]
+    # gs 為方塊邊長 pixel 數
+    for i in range(len(trail)):
+        # https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        # fillRect(x, y, width, height)
+        ctx.fillRect(trail[i][0]*gs, trail[i][1]*gs, gs-2, gs-2)
+        # 若 snake 第一節座標 (px, py)  穿過身體任一節, 則 score 歸零
+        if trail[i][0] == px and trail[i][1] == py:
+            score = score if paused else 0
+            # snake reset 為五節
+            tail = 5
+    # trail 數列以碰到的 [px, py] 座標數列插入作為第一節
+    trail.insert(0, [px, py])
+    while len(trail) > tail:
+        # pop() 內建移除數列最後一個 element
+        trail.pop()
+    # ax, ay 為紅點座標
+    # 當 snake 第一節座標[px, py] 與紅色食物座標 [ax, ay] 重合
+    # 則 tail 增量, 即多一節且得分加 1, 然後食物座標 [ax, ay] 重新以亂數定位
+    if ax == px and ay == py:
+        tail += 1
+        ax = math.floor(random()*tc)
+        ay = math.floor(random()*tc)
+        score += 1
+    # 更新計分顯示
+    update_score(score)
+    ctx.fillStyle = "red"
+    ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
+  
+def key_push(evt):
+    global xv, yv, pre_pause, paused
+    key = evt.keyCode
+    # 37 is left arrow key
+    # 74 is j key
+    if key == 74 and not paused:
+        xv = -1
+        yv = 0
+    # 38 is up arrow key
+    # 73 is i key
+    elif key == 73 and not paused:
+        xv = 0
+        yv = -1
+    # 39 is right arrow key
+    # 76 is l key
+    elif key == 76 and not paused:
+        xv = 1
+        yv = 0
+    # 40 is down arrow key
+    # 75 is k key
+    elif key == 75 and not paused:
+        xv = 0
+        yv = 1
+    # 32 is pause key
+    # 80 is p key
+    elif key == 80:
+        temp = [xv, yv]
+        xv = pre_pause[0]
+        yv = pre_pause[1]
+        pre_pause = [*temp]
+        paused = not paused
+  
+def show_instructions(evt):
+        window.alert("keys to control: i=up, k=down, j=left, l=right, p=pause")
+      
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "game-board"
+brython_div = doc["brython_div"]
+brython_div <= canvas
+  
+score_doc = html.DIV("score")
+score_doc.id = "score"
+brython_div <= score_doc
+  
+high_score_doc = html.DIV("high-score")
+high_score_doc.id = "high-score"
+brython_div <= high_score_doc
+  
+button = html.BUTTON("Keys to control")
+button.id = "instructions-btn"
+brython_div <= button
+  
+score = 0
+high_score = 0
+  
+px = py = 10
+# gs*tc = canvas width and height
+gs = 20
+tc = 30
+ax = ay = 15
+xv = yv = 0
+trail = []
+tail = 5
+  
+pre_pause = [0,0]
+paused = False
+ctx = canvas.getContext("2d")
+doc.addEventListener("keydown", key_push)
+instructions_btn = doc["instructions-btn"]
+instructions_btn.addEventListener("click", show_instructions)
+browser.timer.set_interval(game, 1000/15)
+</script><h1>Final Project</h1>
 <p>Final Project 佔學期成績 30%</p>
 <p><span style="background-color: #ffff99;">Final Project 必須在 2022.01.05 22:00 之前完成</span>.</p>
 <p><a href="https://github.com/mdecourse/cp2021/discussions/11">Final Project 具體項目成果回報區</a>將於 2021.11.09 開啟, 於 <span style="background-color: #ff99cc;">2022.01.05 22:00 關閉</span></p>
