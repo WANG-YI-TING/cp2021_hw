@@ -237,7 +237,28 @@ doc["add1to100"].bind('click', add)
 <p>2. 請登入 Github 帳號後, 連線至 <a href="https://github.com/mdecourse/cp2021_hw">https://github.com/mdecourse/cp2021_hw</a> 後, 透過 <span style="background-color: #00ff00;">Use this template</span> 按鈕建立自己的 cp2021_hw 倉儲. 並至該倉儲的 Settings -&gt; Pages -&gt; Source 將 main 分支設為 Github Pages 的 root (也就是選擇將倉儲的 main 分支設為對應網站的根目錄).</p>
 <p>3. 請將 HW1 與 HW2 的作業內容登錄至個人的 cp2021_hw 倉儲與網站中. (學習如何透過 git 指令修改倉儲中的版本內容)</p>
 <p>4. 請在個人作業網站的 HW2 區域下增設一個 H2 頁面, 將該網頁標題命名為 run, 可以如 <a href="https://mde.tw/cp2021/content/run.html">run</a> 頁面中的內容, 並且利用此頁面收集 Python 範例程式. (例如: 可自動執行的貪食蛇: <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py">https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py</a> 將 <a href="https://gist.github.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439">https://gist.github.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439</a> 作為 <a href="https://mde.tw/cp2021/content/run.html">https://mde.tw/cp2021/content/run.html</a> 頁面中 src 變數的值, 就可以在頁面中導入程式碼並執行)</p>
-<h2>problem</h2>
+<h2>建立cp2021_hw作業倉儲說明</h2>
+<p>1.須先建立且登入GitHub帳號</p>
+<p>2.進入老師的作業倉儲<a href="https://github.com/mdecourse/cp2021_hw">https://github.com/mdecourse/cp2021_hw </a></p>
+<p>按 Use this template 在Repository name 輸入倉儲名稱cp2021_hw</p>
+<p>點選<span>Create repository from template 複製頁面出現的網址</span></p>
+<p><span>3.開啟cmd(黑色頁面的編譯器)</span></p>
+<p><span>輸入cd tmp</span></p>
+<p><span>輸入git clone --recurse-submodules (作業倉儲網址+.git)/</span></p>
+<p><span>輸入cd cp2021_hw</span></p>
+<p><span>輸入pip install pyopenssl</span></p>
+<p><span>輸入cms</span></p>
+<p><span>接著會出現一段網址https://127.0.0.1:9448/</span></p>
+<p><span>9448才是正確的 之前一直卡在9445就進不去近端網頁</span></p>
+<p><span>複製網址後到瀏覽器開啟進入近端網頁</span></p>
+<p><span>Login密碼為admin 輸入後將網頁改成靜態網頁就可以編輯自己的作業網站</span></p>
+<p><span>編輯完成後要將網頁改成靜態</span></p>
+<p><span>4.記得要到倉儲網站的settings的Developer settings裡的Personal access tokens建立一個自己的token，</span></p>
+<p><span>還有要將到期時效改為永久</span><span>，這樣token就不會到期</span><span>，且要從cmd推資料到近端時，就不會找不到要推的對象是誰</span></p>
+<p><span>5.要從cmd推資料到近端時按ctrl+c兩次</span></p>
+<p><span>輸入acp "(要推的物件名稱)" 這個很重要 acp是推資料到近端的一個重要指令</span></p>
+<p><span>6.從倉儲裡的settings點選pages，將Source改為main並儲存</span></p>
+<p><span>這樣就能把編輯的資料推到近端</span></p><h2>problem</h2>
 <p>因為token過一段會自動更新，時效到了就無法從靜態近端網頁推東西到動態網頁。</p>
 <p>所以要從個人頁面的settings的developer settings裡的personal access token</p>
 <p>把舊的token刪除，設立一個新的token，並把token到期時間改為永久，這樣從靜態網頁推東西到動態網頁。</p><h1>w10</h1>
