@@ -4,8 +4,7 @@
 <p>41023101</p>
 <p>網站倉儲:<a href="https://github.com/WANG-YI-TING/cp2021_hw">https://github.com/WANG-YI-TING/cp2021_hw</a> </p>
 <p>網站連結:<a href="https://wang-yi-ting.github.io/cp2021_hw/">https://wang-yi-ting.github.io/cp2021_hw/</a> </p>
-<p>其他與個人或作業相關資料說明或介紹</p>
-<h2>run</h2>
+<p>其他與個人或作業相關資料說明或介紹</p><h2>run</h2>
 <!-- 導入 brython 程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
@@ -744,7 +743,7 @@ def game():
     # 畫布填入黑色
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     # snake 為 lime 色
-    ctx.fillStyle = "lime"
+    ctx.fillStyle = "purple"
     # trail 為數列, 代表 snake 各節 [x,y] 座標
     # trail = [[x0,y0], [x1, y1], [x2, y2]...]
     # gs 為方塊邊長 pixel 數
@@ -772,7 +771,7 @@ def game():
         score += 1
     # 更新計分顯示
     update_score(score)
-    ctx.fillStyle = "red"
+    ctx.fillStyle = "blue"
     ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
   
 def key_push(evt):
