@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='run.html'>run</a><li><a href='runsrc.html'>runsrc</a><li><a href='SSH.html'>SSH</a></li></ul><li class='has-children'><a href='Exam.html'>Exam</a><ul class='dropdown'><li><a href='w13.html'>w13</a></li></ul><li><a href='HW1.html'>HW1</a><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='建立cp2021_hw作業倉儲說明.html'>建立cp2021_hw作業倉儲說明</a><li><a href='problem.html'>problem</a></li></ul><li class='has-children'><a href='w10.html'>w10</a><ul class='dropdown'><li><a href='w11 note.html'>w11 note</a><li><a href='w12.html'>w12</a><li><a href='Examples.html'>Examples</a></li></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li><a href='snake.html'>snake</a></li></ul><li><a href='Final Project.html'>Final Project</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li class='has-children'><a href='run.html'>run</a><ul class='dropdown'><li><a href='runsrc.html'>runsrc</a></li></ul><li><a href='SSH.html'>SSH</a></li></ul><li class='has-children'><a href='Exam.html'>Exam</a><ul class='dropdown'><li><a href='w13.html'>w13</a></li></ul><li><a href='HW1.html'>HW1</a><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='建立cp2021_hw作業倉儲說明.html'>建立cp2021_hw作業倉儲說明</a><li><a href='problem.html'>problem</a></li></ul><li class='has-children'><a href='w10.html'>w10</a><ul class='dropdown'><li><a href='w11 note.html'>w11 note</a><li><a href='w12.html'>w12</a><li><a href='Examples.html'>Examples</a></li></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li><a href='snake.html'>snake</a></li></ul><li><a href='Final Project.html'>Final Project</a></li>
                       </ul>
                 </nav>
               </div>
@@ -190,7 +190,7 @@ def game():
     # 畫布填入黑色
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     # snake 為 lime 色
-    ctx.fillStyle = "lime"
+    ctx.fillStyle = "purple"
     # trail 為數列, 代表 snake 各節 [x,y] 座標
     # trail = [[x0,y0], [x1, y1], [x2, y2]...]
     # gs 為方塊邊長 pixel 數
@@ -218,7 +218,7 @@ def game():
         score += 1
     # 更新計分顯示
     update_score(score)
-    ctx.fillStyle = "red"
+    ctx.fillStyle = "blue"
     ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
   
 def key_push(evt):

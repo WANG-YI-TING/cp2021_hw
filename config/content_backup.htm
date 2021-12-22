@@ -93,7 +93,10 @@ run()
 <script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script><h2>SSH</h2>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
+<h3>runsrc</h3>
+<p></p>
+<p><a href="https://raw.githubusercontent.com/WANG-YI-TING/cp2021_hw/main/downloads/run.txt">run.txt</a></p><h2>SSH</h2>
 <p>下載putty這裡是詢問同學協助操作完成的</p>
 <p>1.先下載putty</p>
 <p>2.下載完後進入putty利用puttygen.exe製作一個key</p>
@@ -743,7 +746,7 @@ def game():
     # 畫布填入黑色
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     # snake 為 lime 色
-    ctx.fillStyle = "lime"
+    ctx.fillStyle = "purple"
     # trail 為數列, 代表 snake 各節 [x,y] 座標
     # trail = [[x0,y0], [x1, y1], [x2, y2]...]
     # gs 為方塊邊長 pixel 數
@@ -771,7 +774,7 @@ def game():
         score += 1
     # 更新計分顯示
     update_score(score)
-    ctx.fillStyle = "red"
+    ctx.fillStyle = "blue"
     ctx.fillRect(ax*gs, ay*gs, gs-2, gs-2)
   
 def key_push(evt):
